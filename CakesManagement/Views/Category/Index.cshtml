@@ -1,0 +1,25 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Category";
+}
+
+
+<table class="table table-bordered table-hover table-striped">
+    <thead class="thead-dark">
+        <tr class="text-center">
+            <th>#ID</th>
+            <th>Category name</th>
+            <th>Cake</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Category cat in Model)
+        {
+            <tr>
+                <td>@cat.CategoryId</td>
+                <td> @cat.CategoryName</td>
+                <td class="text-center"><a title="show products" class="btn btn-outline-info btn-sm" asp-controller="Cakes" asp-action="Index" asp-route-catId="@cat.CategoryId">Cake List @cat.Cakes.Count()</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

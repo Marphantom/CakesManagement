@@ -1,0 +1,59 @@
+﻿@model CakesManagement.Models.CakeModel.Create
+
+@{
+    ViewData["Title"] = "Create";
+    var category = ViewBag.Category as CakesManagement.Entities.Category;
+}
+
+<h1>Create</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" form enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CakeName" class="control-label"></label>
+                <input asp-for="CakeName" class="form-control" />
+                <span asp-validation-for="CakeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Intingredient" class="control-label"></label>
+                <input asp-for="Intingredient" class="form-control" />
+                <span asp-validation-for="Intingredient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Expiry" class="control-label"></label>
+                <input asp-for="Expiry" class="form-control" />
+                <span asp-validation-for="Expiry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfManufacture" class="control-label"></label>
+                <input asp-for="DateOfManufacture" class="form-control" />
+                <span asp-validation-for="DateOfManufacture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Delete" class="control-label"></label>
+                <input asp-for="Delete" class="form-control" value="đang bán" />
+                <input asp-for="CategoryId" hidden class="form-control" value="@category.CategoryId" />
+                <span asp-validation-for="Delete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
